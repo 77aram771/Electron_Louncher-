@@ -1,7 +1,8 @@
 import React from 'react';
 import { ListGroup, Button, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import BrowserListItem from './BrowserListItem';
+import BrowserListItem from '../../BrowserListItem';
+import './style.css';
 
 const Help = () => (
   <div>

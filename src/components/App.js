@@ -1,7 +1,7 @@
 import React from 'react';
-import Home from './Home';
-import Mine from './Mine';
-import Help from './Help';
+import Home from './Page/Home/Home';
+import Mine from './Page/Mine/Mine';
+import Help from './Page/Help/Help';
 import {MemoryRouter, Switch, Route} from 'react-router';
 import '../assets/css/global.css'
 
