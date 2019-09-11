@@ -3,11 +3,12 @@ import {Jumbotron} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import '../../../assets/css/Home.css';
 import './style.css';
+import {Nav} from "../../Elements/Nav/Nav";
 
 const Mine = () => (
     <Fragment>
-        <div className='Mine'>
-            <p className='mine_p'>Mine</p>
+        <div className='mine'>
+            <Nav/>
         </div>
     </Fragment>
 );

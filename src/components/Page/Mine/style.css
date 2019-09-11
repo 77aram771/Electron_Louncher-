@@ -2,11 +2,11 @@
     color: white;
 }
 
-.Mine {
+.mine {
     border: 1px solid red;
     width: 90%;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
