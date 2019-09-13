@@ -22,7 +22,13 @@ export const Nav = () => {
                     </div>
                 </div>
                 <div className='nav_right'>
-
+                    <div className='nav_right_search_box'>
+                        <div className='nav_right_search'>
+                            <label htmlFor="search">
+                                <input id='search' type="text" placeholder='Find or start a conversation'/>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Fragment>
