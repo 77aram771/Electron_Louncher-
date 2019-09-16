@@ -25,7 +25,11 @@ export const Nav = () => {
                     <div className='nav_right_search_box'>
                         <div className='nav_right_search'>
                             <label htmlFor="search">
-                                <input id='search' type="text" placeholder='Find or start a conversation'/>
+                                <input
+                                    id='search'
+                                    type="text"
+                                    placeholder='Find or start a conversation'
+                                />
                             </label>
                         </div>
                     </div>

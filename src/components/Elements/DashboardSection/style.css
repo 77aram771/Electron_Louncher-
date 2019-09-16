@@ -1,0 +1,21 @@
+.DashboardSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    background-color: #27292d;
+    width: 80%;
+    height: 95vh;
+
+}
+
+.DashboardSection_z {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    background-color: #27292d;
+    width: 100%;
+    height: 95vh;
+
+}
