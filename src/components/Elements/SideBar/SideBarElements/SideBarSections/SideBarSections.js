@@ -13,11 +13,16 @@ import arrowLeft from '../../../../../assets/image/icon/arrow_left.png'
 
 
 export const SideBarSections = () => {
+
+    const handleClick = () => {
+        alert("Don't work now")
+    }
+
     return (
         <Fragment>
             <div className='SideBarSections'>
                 <div className='SideBarSections_items'>
-                    <div className='SideBarSections_item active'>
+                    <div className='SideBarSections_item active' onClick={() => handleClick()}>
                         <div className='SideBarSections_item_icon'>
                             <img src={folderImg} alt="icon"/>
                         </div>
@@ -28,37 +33,37 @@ export const SideBarSections = () => {
                             <img src={arrowLeft} alt="icon"/>
                         </div>
                     </div>
-                    <div className='SideBarSections_item'>
+                    <div className='SideBarSections_item' onClick={() => handleClick()}>
                         <div className='SideBarSections_item_icon'>
-                            {/*<img src="" alt="icon"/>*/}
+                            <img src={libraryImg} alt="icon"/>
                         </div>
                         <div className='SideBarSections_item_text'>
                             <p>Library</p>
                         </div>
                         <div className='SideBarSections_item_arrow'>
-                            {/*<img src="" alt="icon"/>*/}
+                            <img src={arrowLeft} alt="icon"/>
                         </div>
                     </div>
-                    <div className='SideBarSections_item'>
+                    <div className='SideBarSections_item' onClick={() => handleClick()}>
                         <div className='SideBarSections_item_icon'>
-                            {/*<img src="" alt="icon"/>*/}
+                            <img src={frendsImg} alt="icon"/>
                         </div>
                         <div className='SideBarSections_item_text'>
                             <p>Friends</p>
                         </div>
                         <div className='SideBarSections_item_arrow'>
-                            {/*<img src="" alt="icon"/>*/}
+                            <img src={arrowLeft} alt="icon"/>
                         </div>
                     </div>
-                    <div className='SideBarSections_item'>
+                    <div className='SideBarSections_item' onClick={() => handleClick()}>
                         <div className='SideBarSections_item_icon'>
-                            {/*<img src="" alt="icon"/>*/}
+                            <img src={loveImg} alt="icon"/>
                         </div>
                         <div className='SideBarSections_item_text'>
                             <p>Favourites</p>
                         </div>
                         <div className='SideBarSections_item_arrow'>
-                            {/*<img src="" alt="icon"/>*/}
+                            <img src={arrowLeft} alt="icon"/>
                         </div>
                     </div>
                 </div>

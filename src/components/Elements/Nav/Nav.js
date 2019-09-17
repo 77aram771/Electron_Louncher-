@@ -7,7 +7,7 @@ export const Nav = () => {
             <div className='nav'>
                 <div className='nav_left'>
                     <div className='nav_left_items'>
-                        <div className='nav_left_item'>
+                        <div className='nav_left_item_active'>
                             <p>Main</p>
                         </div>
                         <div className='nav_left_item'>

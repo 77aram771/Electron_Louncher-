@@ -1,0 +1,46 @@
+.StoreUi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+}
+
+.StoreUi_title {
+    padding: 0 0 0 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85%;
+    height: 61px;
+    border: 2px solid #202225;
+    background-color: #202225;
+    margin: 0 0 40px 0;
+}
+
+.StoreUi_title span {
+    color: #55ff7d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+}
+
+.StoreUi_items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.StoreUi_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 15px;
+}

@@ -1,21 +1,123 @@
 .DashboardSection {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    border: 1px solid red;
     background-color: #27292d;
     width: 80%;
     height: 95vh;
-
 }
 
 .DashboardSection_z {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
-    border: 1px solid red;
     background-color: #27292d;
     width: 100%;
     height: 95vh;
-
 }
+
+.DashboardSection_tabs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 40%;
+}
+
+.DashboardSection_tabList {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.DashboardSection_tab {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 226px;
+    height: 61px;
+    border: 2px solid #202225;
+    background-color: #202225;
+}
+
+.DashboardSection_tab_active {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 226px;
+    height: 61px;
+    border: 2px solid #202225;
+    background-color: #202225;
+}
+
+.DashboardSection_tab_active span {
+    color: #55ff7d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.DashboardSection_tab:hover span {
+    color: #55ff7d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.DashboardSection_tab span {
+    color: #8d8d8d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.DashboardSection_TabPanel {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.DashboardSection_TabPanel_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.DashboardSection_TabPanel h2 {
+    color: white;
+}
+.DashboardSection_TabPanel_box_items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+}
+.DashboardSection_TabPanel_box_item {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.DashboardSection_TabPanel_box_item  img{
+    width: 188px;
+    height: 164px;
+}
+

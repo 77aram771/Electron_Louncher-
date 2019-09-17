@@ -1,0 +1,77 @@
+.friends-red {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.friends-red img {
+    width: 42px;
+    height: 42px;
+}
+
+.friends-red::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -8px;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #202225;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.friends-green {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.friends-green img {
+    width: 42px;
+    height: 42px;
+}
+
+.friends-green::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -8px;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #202225;
+    background-color: #55ff7d;
+    border-radius: 50%;
+}
+
+.friends-yellow {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.friends-yellow img {
+    width: 42px;
+    height: 42px;
+}
+
+.friends-yellow::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: -8px;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #202225;
+    background-color: #ff9522;
+    border-radius: 50%;
+}
