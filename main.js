@@ -4,25 +4,31 @@
 const {app, BrowserWindow} = require('electron');
 const path = require('path')
 const url = require('url')
+const {ipcMain} = require('electron')
 
 const TITLE = 'React Electron React-Router Boilerplate';
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-// Keep a reference for dev mode
 let dev = false;
 if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath)) {
     dev = true;
 }
 
 function createWindow() {
-    // Create the browser window.
     mainWindow = new BrowserWindow({
-        title: TITLE, width: 1280, height: 768 + '%', show: false
+        width: 1440,
+        height: 1020,
+        minWidth: 1280,
+        minHeight: 768,
+        //icon: path.join(__dirname, 'assets/icons/png/64x64.png')
     });
-    // and load the index.html of the app.
+
+
+    ipcMain.on('resize-me-please', (event, arg) => {
+        mainWindow.setSize(1280,768)
+    })
+
     let indexPath;
     if (dev && process.argv.indexOf('--noDevServer') === -1) {
         indexPath = url.format({
@@ -40,45 +46,30 @@ function createWindow() {
     }
     mainWindow.loadURL(indexPath);
 
-    // Don't show until we are ready and loaded
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
         mainWindow.setTitle(TITLE);
         mainWindow.setFullScreen(true);
         mainWindow.setMinimizable(true);
-
-        // Open the DevTools automatically if developing
         if (dev) {
             mainWindow.webContents.openDevTools();
         }
     });
 
-    // Emitted when the window is closed.
     mainWindow.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
         mainWindow = null;
     });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
 
-// Quit when all windows are closed.
 app.on('window-all-closed', () => {
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
         app.quit();
     }
 });
 
 app.on('activate', () => {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (mainWindow === null) {
         createWindow();
     }
