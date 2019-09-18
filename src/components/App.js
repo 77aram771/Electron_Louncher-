@@ -4,7 +4,8 @@ import Mine from './Page/Mine/Mine';
 import Help from './Page/Help/Help';
 import {MemoryRouter, Switch, Route} from 'react-router';
 import '../assets/css/global.css'
-
+import TitleBar from 'frameless-titlebar';
+import menu from './AppMenu';
 const App = () => (
     <MemoryRouter>
         <Switch>

@@ -19,10 +19,10 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         titleBarStyle: 'hidden',
         title: TITLE,
-        width: 1440,
-        height: 1020,
-        minWidth: 1024,
-        minHeight: 768,
+        width: 1920,
+        height: 1080,
+        minWidth: 1920,
+        minHeight: 1080,
         backgroundColor: '#312450',
         show: true,
         icon: null
