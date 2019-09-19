@@ -3,6 +3,7 @@ import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import exelImg from '../../../assets/image/exelImg.png'
 import './style.css';
 import {StoreUi} from "../../UI/Store/StoreUi";
+import ExcelReader from "../ExcelReader/ExcelReader";
 
 export const DashboardSection = ({bool}) => {
 
@@ -31,40 +32,43 @@ export const DashboardSection = ({bool}) => {
 
                     <TabPanel className='DashboardSection_TabPanel'>
                         <h2>Any content 1</h2>
-                        <div className='DashboardSection_TabPanel_box'>
-                            <div className='DashboardSection_TabPanel_box_items'>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                    onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                            </div>
-                        </div>
+                        {/*<div className='DashboardSection_TabPanel_box'>*/}
+                        {/*    <div className='DashboardSection_TabPanel_box_items'>*/}
+                        {/*        <div className='DashboardSection_TabPanel_box_item'*/}
+                        {/*            onClick={() => handleClick()}*/}
+                        {/*        >*/}
+                        {/*            <img src={exelImg} alt="img"/>*/}
+                        {/*            <span>Lorem Ipsum</span>*/}
+                        {/*        </div>*/}
+                        {/*        <div className='DashboardSection_TabPanel_box_item'*/}
+                        {/*             onClick={() => handleClick()}*/}
+                        {/*        >*/}
+                        {/*            <img src={exelImg} alt="img"/>*/}
+                        {/*            <span>Lorem Ipsum</span>*/}
+                        {/*        </div>*/}
+                        {/*        <div className='DashboardSection_TabPanel_box_item'*/}
+                        {/*             onClick={() => handleClick()}*/}
+                        {/*        >*/}
+                        {/*            <img src={exelImg} alt="img"/>*/}
+                        {/*            <span>Lorem Ipsum</span>*/}
+                        {/*        </div>*/}
+                        {/*        <div className='DashboardSection_TabPanel_box_item'*/}
+                        {/*             onClick={() => handleClick()}*/}
+                        {/*        >*/}
+                        {/*            <img src={exelImg} alt="img"/>*/}
+                        {/*            <span>Lorem Ipsum</span>*/}
+                        {/*        </div>*/}
+                        {/*        <div className='DashboardSection_TabPanel_box_item'*/}
+                        {/*             onClick={() => handleClick()}*/}
+                        {/*        >*/}
+                        {/*            <img src={exelImg} alt="img"/>*/}
+                        {/*            <span>Lorem Ipsum</span>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+
+                    <ExcelReader/>
+
                     </TabPanel>
                     <TabPanel className='DashboardSection_TabPanel'>
                         <h2>Any content 2</h2>
