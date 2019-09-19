@@ -4,16 +4,18 @@ import Mine from './Page/Mine/Mine';
 import Help from './Page/Help/Help';
 import {MemoryRouter, Switch, Route} from 'react-router';
 import '../assets/css/global.css'
-import TitleBar from 'frameless-titlebar';
-import menu from './AppMenu';
+import Default from "./examples/default";
+
 const App = () => (
-    <MemoryRouter>
-        <Switch>
-            <Route path="/mine" component={Mine}/>
-            <Route path="/help" component={Help}/>
-            <Route path="/" component={Home}/>
-        </Switch>
-    </MemoryRouter>
+    <Default>
+        <MemoryRouter>
+            <Switch>
+                <Route path="/mine" component={Mine}/>
+                <Route path="/help" component={Help}/>
+                <Route path="/" component={Home}/>
+            </Switch>
+        </MemoryRouter>
+    </Default>
 );
 
 export default App;

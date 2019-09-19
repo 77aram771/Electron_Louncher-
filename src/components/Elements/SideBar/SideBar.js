@@ -8,7 +8,7 @@ export const SideBar = ({bool, handleChangeBool}) => {
     return (
         <Fragment>
             <div style={ bool ? {
-                width: 20 + '%',
+                width: 17 + '%',
                 height: 100 + '%',
                 position: 'relative'
             }: {

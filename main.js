@@ -1,6 +1,5 @@
 'use strict';
 
-// Import parts of electron to use
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
@@ -11,33 +10,34 @@ const TITLE = 'React Electron React-Router Boilerplate';
 let mainWindow;
 
 let dev = false;
+
 if (process.defaultApp || /[\\/]electron-prebuilt[\\/]/.test(process.execPath) || /[\\/]electron[\\/]/.test(process.execPath)) {
     dev = true;
 }
 
 function createWindow() {
+
     mainWindow = new BrowserWindow({
-        titleBarStyle: 'hidden',
+        // titleBarStyle: 'hidden',
         title: TITLE,
         width: 1920,
         height: 1080,
         minWidth: 1920,
         minHeight: 1080,
         backgroundColor: '#312450',
-        show: true,
-        icon: null
+        // show: true,
+        // icon: null,
+        frame: false
     });
-    ipcMain.on('resize-me-please', (event, arg) => {
-        mainWindow.setSize(width,height)
-    });
-    mainWindow.setSkipTaskbar(true);
-
 
     ipcMain.on('resize-me-please', (event, arg) => {
         mainWindow.setSize(width,height)
-    })
+    });
+
+    // mainWindow.setSkipTaskbar(true);
 
     let indexPath;
+
     if (dev && process.argv.indexOf('--noDevServer') === -1) {
         indexPath = url.format({
             protocol: 'http:',
@@ -45,7 +45,8 @@ function createWindow() {
             pathname: 'index.html',
             slashes: true
         });
-    } else {
+    }
+    else {
         indexPath = url.format({
             protocol: 'file:',
             pathname: path.join(__dirname, 'dist', 'index.html'),
@@ -54,14 +55,11 @@ function createWindow() {
     }
     mainWindow.loadURL(indexPath);
 
-    // Don't show until we are ready and loaded
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
         mainWindow.setTitle(TITLE);
         mainWindow.setFullScreen(true);
         mainWindow.setMinimizable(true);
-
-        // Open the DevTools automatically if developing
         if (dev) {
             mainWindow.webContents.openDevTools();
         }
@@ -69,28 +67,19 @@ function createWindow() {
 
 
     mainWindow.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
         mainWindow = null;
     });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
 
-// Quit when all windows are closed.
 app.on('window-all-closed', () => {
-
     if (process.platform !== 'darwin') {
         app.quit();
     }
 });
 
 app.on('activate', () => {
-
     if (mainWindow === null) {
         createWindow();
     }
