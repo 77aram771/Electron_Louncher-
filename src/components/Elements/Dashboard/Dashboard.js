@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import './style.css';
 import {SideBar} from "../SideBar/SideBar";
-import {DashboardSection} from "../DashboardSection/DashboardSection";
+import DashboardSection from "../DashboardSection/DashboardSection";
 
 export const Dashboard = () => {
 

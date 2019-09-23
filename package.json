@@ -53,6 +53,7 @@
     "mini-css-extract-plugin": "^0.4.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-excel-renderer": "^1.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
@@ -74,6 +75,8 @@
     "react-tabs": "^3.0.0",
     "reactstrap": "^6.5.0",
     "typeface-ibm-plex-sans": "0.0.61",
-    "xlsx": "0.13.4"
+    "xlsx": "0.13.4",
+    "react-excel-renderer": "^1.0.0",
+    "font-awesome": "^4.7.0"
   }
 }
