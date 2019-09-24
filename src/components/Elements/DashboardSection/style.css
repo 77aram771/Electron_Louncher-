@@ -15,7 +15,7 @@
     align-items: center;
     background-color: #27292d;
     width: 100%;
-    height: 95vh;
+    height: 89.6vh;
 }
 
 .DashboardSection_tabs {
@@ -99,9 +99,11 @@
     width: 100%;
     height: 100%;
 }
+
 .DashboardSection_TabPanel h2 {
     color: white;
 }
+
 .DashboardSection_TabPanel_box_items {
     display: flex;
     justify-content: flex-start;
@@ -109,6 +111,7 @@
     width: 85%;
     height: 100%;
 }
+
 .DashboardSection_TabPanel_box_item {
     cursor: pointer;
     display: flex;
@@ -117,7 +120,7 @@
     margin: 0 10px;
 }
 
-.DashboardSection_TabPanel_box_item  img{
+.DashboardSection_TabPanel_box_item img {
     width: 188px;
     height: 164px;
 }
@@ -227,8 +230,80 @@ TH {
 
 .restrict-card {
     height: 175px;
-    //overflow-y: overlay;
+/ / overflow-y: overlay;
+}
+
+.inputBox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85%;
+    height: 270px;
+    background-color: #202225;
+}
+
+.inputBoxIN {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border: 4px #36393f dashed;
+}
+
+.inputBoxIN input {
+    padding: 10px;
+    height: 100%;
+    display: none;
+}
+
+.inputBoxitems {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+}
+
+.inputBoxIN label {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TextDontElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.TextDontElement p {
+    font-size: 25px;
+    color: #36393f;
+}
+
+.scrollbar::-webkit-scrollbar {
+    background-color: #fff;
+    height: 5px;
+}
+
+/* background of the scrollbar except button or resizer */
+.scrollbar::-webkit-scrollbar-track {
+    background-color: #36393f;
+}
+
+/* scrollbar itself */
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #55ff7d;
+    border-radius: 16px;
+    border: 3px solid #55ff7d
 }
 
 
 
+/* set button(top and bottom of the scrollbar) */
+.scrollbar::-webkit-scrollbar-button {
+    display: none
+}

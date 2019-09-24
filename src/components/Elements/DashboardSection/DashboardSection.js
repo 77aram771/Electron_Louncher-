@@ -16,12 +16,12 @@ import {
     Card
 } from 'reactstrap';
 import exelImg from '../../../assets/image/exelImg.png'
+import uploadImage from '../../../assets/image/icon/u.png'
 import Modal from 'react-modal';
 import './style.css';
 import {StoreUi} from "../../UI/Store/StoreUi";
 
 let num = 0;
-
 const customStyles = {
     content: {
         top: '50%',
@@ -48,7 +48,8 @@ export default class DashboardSection extends React.Component {
             rows: null,
             cols: null,
             modalIsOpen: false,
-            excelArray: null
+            excelArray: [],
+            numId: 0
         };
         this.fileInput = React.createRef();
     }
@@ -58,24 +59,20 @@ export default class DashboardSection extends React.Component {
             modalIsOpen: !this.state.modalIsOpen
         })
     };
+
     closeModal = () => {
         this.setState({
-            modalIsOpen: !this.state.modalIsOpen
+            modalIsOpen: !this.state.modalIsOpen,
+            // cols: null,
+            // rows: null,
         })
     };
-    renderFile = (fileObj) => {
 
-        num++;
-
-        this.setState(prevState => ({
-            excelArray: {  // object that we want to update
-                id: num,
-                ...prevState.excelArray,    // keep all other key-value pairs
-                item: fileObj
-            }
-        }), () => console.log('excelArray', this.state.excelArray));
-
-        ExcelRenderer(fileObj, (err, resp) => {
+    renderFile = (id) => {
+        console.log('fileObj', id);
+        let excel = this.state.excelArray[id].item;
+        console.log('excel', excel);
+        ExcelRenderer(excel, (err, resp) => {
             if (err) {
                 console.log(err);
             } else {
@@ -89,7 +86,9 @@ export default class DashboardSection extends React.Component {
     };
 
     fileHandler = (event) => {
+        event.preventDefault();
         if (event.target.files.length) {
+            num++;
             let fileObj = event.target.files[0];
             let fileName = fileObj.name;
             if (fileName.slice(fileName.lastIndexOf('.') + 1) === "xlsx") {
@@ -97,7 +96,19 @@ export default class DashboardSection extends React.Component {
                     uploadedFileName: fileName,
                     isFormInvalid: false
                 });
-                this.renderFile(fileObj)
+                let newItem = {
+                    item: fileObj,
+                    id: num
+                };
+                this.setState((prevState) => ({
+                    excelArray: [...prevState.excelArray, ...[newItem]]
+                }));
+
+                setTimeout(() => {
+                    this.renderFile(this.state.numId)
+                }, 1000)
+
+
             } else {
                 this.setState({
                     isFormInvalid: true,
@@ -105,17 +116,15 @@ export default class DashboardSection extends React.Component {
                 })
             }
         }
-    }
+    };
 
-    toggle = () => {
+    itemHundler = (id) => {
+        console.log('id', id);
         this.setState({
-            isOpen: !this.state.isOpen
+            numId: id
         });
-    }
-
-    openFileBrowser = () => {
-        this.fileInput.current.click();
-    }
+        this.openModal()
+    };
 
     render() {
         return (
@@ -172,67 +181,61 @@ export default class DashboardSection extends React.Component {
                                 </div>
                             </div>
                         </div>*/}
-                            <div>
-                                <Container>
-                                    <form>
-                                        <FormGroup row>
-                                            <Col xs={4} sm={8} lg={10}>
-                                                <InputGroup>
-                                                    <InputGroupAddon addonType="prepend">
-                                                        <Button
-                                                            color="info"
-                                                            style={{color: "white", zIndex: 0}}
-                                                            onClick={this.openFileBrowser.bind(this)}>
-                                                            <i
-                                                                className="cui-file">
-                                                            </i> Browse&hellip;
-                                                        </Button>
-                                                        <input
-                                                            type="file"
-                                                            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                                                            hidden
-                                                            onChange={this.fileHandler.bind(this)}
-                                                            ref={this.fileInput}
-                                                            onClick={(event) => {
-                                                                event.target.value = null
-                                                            }}
-                                                            style={{"padding": "10px"}}
-                                                        />
-                                                    </InputGroupAddon>
-                                                    <FormFeedback>
-                                                        <Fade in={this.state.isFormInvalid} tag="h6"
-                                                              style={{fontStyle: "italic"}}>
-                                                            Please select a .xlsx file only !
-                                                        </Fade>
-                                                    </FormFeedback>
-                                                </InputGroup>
-                                            </Col>
-                                        </FormGroup>
-                                    </form>
-                                    {this.state.dataLoaded &&
-                                    <div>
-                                        <button onClick={this.openModal}>Open Modal</button>
-                                        <Modal
-                                            isOpen={this.state.modalIsOpen}
-                                            onRequestClose={this.closeModal}
-                                            style={customStyles}
-                                            contentLabel="Example Modal"
-                                        >
-                                            <h2>Hello</h2>
-                                            <button onClick={this.closeModal}>close</button>
-                                            <Card body outline color="secondary" className="restrict-card">
-                                                <OutTable
-                                                    data={this.state.rows}
-                                                    columns={this.state.cols}
-                                                    tableClassName="ExcelTable2007"
-                                                    tableHeaderRowClass="heading"
-                                                />
-                                            </Card>
-                                        </Modal>
-                                    </div>
+                            <div className='inputBox'>
+                                <div className='inputBoxIN'>
+                                    <label htmlFor="uploadInput">
+                                        <img src={uploadImage} alt="img"/>
+                                    </label>
+                                    <input
+                                        id='uploadInput'
+                                        type="file"
+                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                        onChange={this.fileHandler.bind(this)}
+                                        ref={this.fileInput}
+                                        onClick={(event) => {
+                                            event.target.value = null
+                                        }}
+                                        style={{"padding": "10px", 'height': '100%'}}
+                                    />
+                                </div>
+                                <div className='inputBoxitems  scrollbar'>
+                                    {
+                                        this.state.excelArray.length > 0
+                                            ? this.state.excelArray.map((item) => {
+                                                return (
+                                                    <div key={item.id} style={{'padding': '0 20px'}}>
+                                                        <img src={exelImg}
+                                                             onClick={() => this.itemHundler(item.id - 1)}/>
+                                                        <Modal
+                                                            isOpen={this.state.modalIsOpen}
+                                                            onRequestClose={this.closeModal}
+                                                            style={customStyles}
+                                                            contentLabel="Example Modal"
+                                                        >
+                                                            <h2>Hello</h2>
+                                                            <button onClick={this.closeModal}>close</button>
+                                                            <Card body outline color="secondary"
+                                                                  className="restrict-card">
+                                                                <OutTable
+                                                                    data={this.state.rows}
+                                                                    columns={this.state.cols}
+                                                                    tableClassName="ExcelTable2007"
+                                                                    tableHeaderRowClass="heading"
+                                                                />
+                                                            </Card>
+                                                        </Modal>
+                                                    </div>
+                                                )
+                                            })
+                                            :
+                                            <div className='TextDontElement'>
+                                                <p>Add Excel Pleas</p>
+                                            </div>
+
                                     }
-                                </Container>
+                                </div>
                             </div>
+
                         </TabPanel>
                         <TabPanel className='DashboardSection_TabPanel'>
                             <h2>Any content 2</h2>
