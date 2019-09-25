@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import React, {Fragment, useState} from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import {OutTable, ExcelRenderer} from 'react-excel-renderer';
@@ -59,14 +60,18 @@ export default class DashboardSection extends React.Component {
 
     renderFile = (id) => {
         let excel = this.state.excelArray[id].item;
-        ExcelRenderer(excel, (err, resp) => {
+        console.log('Log ::: id :::', id);
+        console.log('Log ::: ExcelRenderer :::', ExcelRenderer);
+        
+        return ExcelRenderer(excel, (err, resp) => {
             if (err) {
                 console.log(err);
             } else {
-                this.setState({
-                    cols: resp.cols,
-                    rows: resp.rows,
-                });
+                // this.setState({
+                //     cols: resp.cols,
+                //     rows: resp.rows,
+                // });
+                console.log('Log ::: resp :::', resp);
             }
         });
     };
@@ -85,9 +90,6 @@ export default class DashboardSection extends React.Component {
                 this.setState((prevState) => ({
                     excelArray: [...prevState.excelArray, ...[newItem]],
                 }));
-                setTimeout(() => {
-                    this.renderFile(this.state.numId)
-                }, 0)
             }
         }
     };
@@ -96,8 +98,19 @@ export default class DashboardSection extends React.Component {
         console.log('id', id);
         this.setState({
             numId: id
-        });
-        this.openModal()
+        },
+            async () => {
+                const fusk = await this.renderFile(this.state.numId);
+
+                this.setState(
+                    {...fusk},
+                    () => {
+                        this.openModal();
+                    },
+                );
+            }
+        );
+        // this.openModal()
     };
 
     renderExcel = () => {
@@ -108,8 +121,10 @@ export default class DashboardSection extends React.Component {
                 tableClassName="ExcelTable2007"
                 tableHeaderRowClass="heading"
             />
-        )
+        );
     };
+    
+    
 
     render() {
         return (
