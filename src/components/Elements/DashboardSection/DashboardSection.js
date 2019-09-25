@@ -1,22 +1,9 @@
-import React, {Fragment, useState} from 'react'
+import React, {Fragment, useState} from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import {OutTable, ExcelRenderer} from 'react-excel-renderer';
-import {
-    Jumbotron,
-    Col,
-    Input,
-    InputGroup,
-    InputGroupAddon,
-    FormGroup,
-    Label,
-    Button,
-    Fade,
-    FormFeedback,
-    Container,
-    Card
-} from 'reactstrap';
 import exelImg from '../../../assets/image/exelImg.png'
 import uploadImage from '../../../assets/image/icon/u.png'
+import delIcon from '../../../assets/image/icon/del.png'
 import Modal from 'react-modal';
 import './style.css';
 import {StoreUi} from "../../UI/Store/StoreUi";
@@ -42,9 +29,6 @@ export default class DashboardSection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: false,
-            dataLoaded: false,
-            isFormInvalid: false,
             rows: null,
             cols: null,
             modalIsOpen: false,
@@ -63,21 +47,23 @@ export default class DashboardSection extends React.Component {
     closeModal = () => {
         this.setState({
             modalIsOpen: !this.state.modalIsOpen,
-            // cols: null,
-            // rows: null,
         })
     };
 
+    deleteItem = (vo, id) => {
+        const items = this.state.excelArray.filter(item => item.id !== id);
+        this.setState({
+            excelArray: items,
+        });
+    };
+
     renderFile = (id) => {
-        console.log('fileObj', id);
         let excel = this.state.excelArray[id].item;
-        console.log('excel', excel);
         ExcelRenderer(excel, (err, resp) => {
             if (err) {
                 console.log(err);
             } else {
                 this.setState({
-                    dataLoaded: true,
                     cols: resp.cols,
                     rows: resp.rows,
                 });
@@ -92,28 +78,16 @@ export default class DashboardSection extends React.Component {
             let fileObj = event.target.files[0];
             let fileName = fileObj.name;
             if (fileName.slice(fileName.lastIndexOf('.') + 1) === "xlsx") {
-                this.setState({
-                    uploadedFileName: fileName,
-                    isFormInvalid: false
-                });
                 let newItem = {
                     item: fileObj,
                     id: num
                 };
                 this.setState((prevState) => ({
-                    excelArray: [...prevState.excelArray, ...[newItem]]
+                    excelArray: [...prevState.excelArray, ...[newItem]],
                 }));
-
                 setTimeout(() => {
                     this.renderFile(this.state.numId)
-                }, 1000)
-
-
-            } else {
-                this.setState({
-                    isFormInvalid: true,
-                    uploadedFileName: ""
-                })
+                }, 0)
             }
         }
     };
@@ -124,6 +98,17 @@ export default class DashboardSection extends React.Component {
             numId: id
         });
         this.openModal()
+    };
+
+    renderExcel = () => {
+        return (
+            <OutTable
+                data={this.state.rows}
+                columns={this.state.cols}
+                tableClassName="ExcelTable2007"
+                tableHeaderRowClass="heading"
+            />
+        )
     };
 
     render() {
@@ -142,45 +127,11 @@ export default class DashboardSection extends React.Component {
                                 <span>Outlook</span>
                             </Tab>
                             <Tab className='DashboardSection_tab'>
-                                <span>Lore</span>
+                                <span>Lorem</span>
                             </Tab>
                         </TabList>
                         <TabPanel className='DashboardSection_TabPanel'>
                             <h2>Any content 1</h2>
-                            {/*<div className='DashboardSection_TabPanel_box'>
-                            <div className='DashboardSection_TabPanel_box_items'>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                    onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                                <div className='DashboardSection_TabPanel_box_item'
-                                     onClick={() => handleClick()}
-                                >
-                                    <img src={exelImg} alt="img"/>
-                                    <span>Lorem Ipsum</span>
-                                </div>
-                            </div>
-                        </div>*/}
                             <div className='inputBox'>
                                 <div className='inputBoxIN'>
                                     <label htmlFor="uploadInput">
@@ -195,35 +146,47 @@ export default class DashboardSection extends React.Component {
                                         onClick={(event) => {
                                             event.target.value = null
                                         }}
-                                        style={{"padding": "10px", 'height': '100%'}}
+                                        style={{
+                                            "padding": "10px",
+                                            'height': '100%'
+                                        }}
                                     />
                                 </div>
                                 <div className='inputBoxitems  scrollbar'>
                                     {
                                         this.state.excelArray.length > 0
-                                            ? this.state.excelArray.map((item) => {
+                                            ? this.state.excelArray.map((item, index) => {
                                                 return (
-                                                    <div key={item.id} style={{'padding': '0 20px'}}>
+                                                    <div key={item.id} style={{
+                                                        'padding': '0 20px',
+                                                        'display': 'flex',
+                                                        'flexDirection': 'column',
+                                                        'alignItems': 'center',
+                                                        'position': 'relative',
+                                                    }}>
                                                         <img src={exelImg}
-                                                             onClick={() => this.itemHundler(item.id - 1)}/>
-                                                        <Modal
-                                                            isOpen={this.state.modalIsOpen}
-                                                            onRequestClose={this.closeModal}
-                                                            style={customStyles}
-                                                            contentLabel="Example Modal"
+                                                             onClick={() => this.itemHundler(index)}
+                                                             style={{'margin': '0 0 10px 0'}}
+                                                        />
+                                                        <span style={{
+                                                            'color': '#8d8d8d',
+                                                            'fontSize': '16px'
+                                                        }}>{item.item.name.substring(0, item.item.name.length - 5)}
+                                                        </span>
+                                                        <div
+                                                            onClick={() => this.deleteItem(null, item.id)}
+                                                            style={{
+                                                                'position': 'absolute',
+                                                                'top': '-10px',
+                                                                'right': '10px',
+                                                                "backgroundColor": 'white',
+                                                                "borderRadius": "50%"
+                                                            }}
                                                         >
-                                                            <h2>Hello</h2>
-                                                            <button onClick={this.closeModal}>close</button>
-                                                            <Card body outline color="secondary"
-                                                                  className="restrict-card">
-                                                                <OutTable
-                                                                    data={this.state.rows}
-                                                                    columns={this.state.cols}
-                                                                    tableClassName="ExcelTable2007"
-                                                                    tableHeaderRowClass="heading"
-                                                                />
-                                                            </Card>
-                                                        </Modal>
+                                                            <img src={delIcon} style={{
+                                                                'width': '30px'
+                                                            }} alt="del"/>
+                                                        </div>
                                                     </div>
                                                 )
                                             })
@@ -231,8 +194,18 @@ export default class DashboardSection extends React.Component {
                                             <div className='TextDontElement'>
                                                 <p>Add Excel Pleas</p>
                                             </div>
-
                                     }
+                                    <Modal
+                                        isOpen={this.state.modalIsOpen}
+                                        onRequestClose={this.closeModal}
+                                        style={customStyles}
+                                        contentLabel="Example Modal"
+                                    >
+                                        <button onClick={this.closeModal}>close</button>
+                                        {
+                                            this.renderExcel()
+                                        }
+                                    </Modal>
                                 </div>
                             </div>
 
