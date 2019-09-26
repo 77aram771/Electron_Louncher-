@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #27292d;
-    width: 80%;
+    width: 83%;
     height: 89.6vh;
 }
 
@@ -267,6 +267,28 @@ TH {
     margin: 0 0 0 5px;
 }
 
+.inputBoxitem {
+    cursor: pointer;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.inputBoxitemDelete {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background-color: white;
+    border-radius: 50%
+}
+
+.inputBoxitem:hover .inputBoxitemDelete {
+    display: block;
+}
+
 .inputBoxIN label {
     height: 100%;
     display: flex;
@@ -313,5 +335,6 @@ TH {
 }
 
 .ReactModal__Content {
-    height: 90%!important;
+    height: 90% !important;
+    border: unset !important;
 }

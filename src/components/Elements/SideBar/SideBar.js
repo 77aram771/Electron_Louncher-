@@ -4,7 +4,7 @@ import {SideBarDirectMessages} from "./SideBarElements/SideBarDirectMessages/Sid
 import {SideBarSections} from "./SideBarElements/SideBarSections/SideBarSections";
 import arrow from '../../../assets/image/icon/arrow_right.png';
 
-export const SideBar = ({bool, handleChangeBool}) => {
+export const SideBar = ({bool, handleChangeBool, changeSection, changeSection2, num}) => {
     return (
         <Fragment>
             <div style={ bool ? {
@@ -17,7 +17,7 @@ export const SideBar = ({bool, handleChangeBool}) => {
                 height: 100 + '%',
             }}>
                 <div className={bool ? 'sidebar' : 'sidebar_z'}>
-                    <SideBarSections/>
+                    <SideBarSections changeSection={changeSection} changeSection2={changeSection2} num={num}/>
                     <SideBarDirectMessages/>
                 </div>
                 <div className={bool ? 'sidebar_button' : 'sidebar_button_z'} onClick={() => handleChangeBool()}>

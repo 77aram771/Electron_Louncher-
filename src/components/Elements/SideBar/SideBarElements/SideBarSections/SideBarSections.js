@@ -12,7 +12,7 @@ import arrowLeft from '../../../../../assets/image/icon/arrow_left.png'
 
 
 
-export const SideBarSections = () => {
+export const SideBarSections = ({changeSection, changeSection2, num}) => {
 
     const handleClick = () => {
         alert("Don't work now")
@@ -22,9 +22,9 @@ export const SideBarSections = () => {
         <Fragment>
             <div className='SideBarSections'>
                 <div className='SideBarSections_items'>
-                    <div className='SideBarSections_item active' onClick={() => handleClick()}>
+                    <div className={num === 0 ? 'SideBarSections_item active' : 'SideBarSections_item'} onClick={() => changeSection()}>
                         <div className='SideBarSections_item_icon'>
-                            <img src={folderImg} alt="icon"/>
+                            <img src={num === 0 ? folderImg : folderImg2} alt="icon"/>
                         </div>
                         <div className='SideBarSections_item_text'>
                             <p>Office Applications</p>
@@ -33,9 +33,9 @@ export const SideBarSections = () => {
                             <img src={arrowLeft} alt="icon"/>
                         </div>
                     </div>
-                    <div className='SideBarSections_item' onClick={() => handleClick()}>
+                    <div className={num === 1 ? 'SideBarSections_item active' : 'SideBarSections_item'} onClick={() => changeSection2()}>
                         <div className='SideBarSections_item_icon'>
-                            <img src={libraryImg} alt="icon"/>
+                            <img src={num === 0 ? libraryImg : libraryImg2} alt="icon"/>
                         </div>
                         <div className='SideBarSections_item_text'>
                             <p>Library</p>

@@ -26,4 +26,5 @@ label {
 dl, ol, ul {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
+    list-style-type: none;
 }
