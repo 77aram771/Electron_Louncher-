@@ -2,8 +2,8 @@ import '@babel/polyfill';
 import React, {Fragment, useState} from 'react';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import './style.css';
-import {StoreUi} from "../../UI/StoreUI/StoreUi";
-import Excel from "../Excel";
+import {StoreUi} from "../../../UI/StoreUI/StoreUi";
+import Excel from "../../Excel";
 
 export default class DashboardSection extends React.Component {
     constructor(props) {

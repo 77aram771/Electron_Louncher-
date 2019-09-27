@@ -2,13 +2,13 @@ import React, {Fragment} from 'react';
 import '../../../assets/css/Home.css';
 import './style.css';
 import {Nav} from "../../Elements/Nav/Nav";
-import {Dashboard} from "../../Elements/Dashboard/Dashboard";
+import {Index} from "../../Elements/Dashboard";
 
 const Mine = () => (
     <Fragment>
         <div className='mine'>
             <Nav/>
-            <Dashboard/>
+            <Index/>
         </div>
     </Fragment>
 );

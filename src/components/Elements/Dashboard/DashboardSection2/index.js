@@ -1,11 +1,11 @@
 import '@babel/polyfill';
 import React, {Fragment, useState} from 'react';
 import './style.css';
-import appImage from '../../../assets/image/app.png'
-import PlayIcon from '../../../assets/image/play-button-sing.png'
-import DeleteIcon from '../../../assets/image/delete.png';
-import MoreIcon from '../../../assets/image/menu_(1).png';
-import libIcon from '../../../assets/image/libIcon.png';
+import appImage from '../../../../assets/image/app.png'
+import PlayIcon from '../../../../assets/image/play-button-sing.png'
+import DeleteIcon from '../../../../assets/image/delete.png';
+import MoreIcon from '../../../../assets/image/menu_(1).png';
+import libIcon from '../../../../assets/image/libIcon.png';
 
 export default class DashboardSection2 extends React.Component {
     constructor(props) {

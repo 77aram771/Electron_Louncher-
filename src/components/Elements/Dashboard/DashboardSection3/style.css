@@ -1,0 +1,138 @@
+.DashboardSection3_tabs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.DashboardSection3__tabList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 70px;
+    border-bottom: 1px solid #42464d;
+    margin: 0 0 77px 0;
+}
+
+.DashboardSection3_tab {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 156px;
+}
+
+.DashboardSection3_tab span {
+    color: #8d8d8d;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 3px;
+}
+
+.DashboardSection3_tab_active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 156px;
+    height: 33px;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+.DashboardSection3_tab_active span {
+    color: #8d8d8d;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    letter-spacing: 3px;
+}
+
+
+.DashboardSection3Online {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.DashboardSection3OnlineItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+}
+.DashboardSection3OnlineItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 84px;
+    border-bottom: 1px solid #42464d;
+}
+
+.DashboardSection3OnlineItemFriend {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.DashboardSection3OnlineItemFriend span {
+    color: #8d8d8d;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 3px;
+    margin: 0 0 0 24px;
+}
+
+.DashboardSection3OnlineItemButton {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.DashboardSection3OnlineItemMess {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 33px;
+    border-radius: 4px;
+    background-color: #3dcb9b;
+}
+
+.DashboardSection3OnlineItemBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 33px;
+    border-radius: 4px;
+    background-color: #8d8d8d;
+}
+
+.DashboardSection3OnlineItemMess img {
+
+}
+
+.DashboardSection3OnlineItemMor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 35px;
+}
+
+.DashboardSection3OnlineItemMor img {
+
+}
