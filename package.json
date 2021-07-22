@@ -79,6 +79,6 @@
     "react-tabs": "^3.0.0",
     "reactstrap": "^6.5.0",
     "typeface-ibm-plex-sans": "0.0.61",
-    "xlsx": "0.13.4"
+    "xlsx": "0.17.0"
   }
 }
